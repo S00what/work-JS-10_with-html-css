@@ -259,7 +259,9 @@ body {
     outline: none;
     margin: 10px;
 }
-.stopwatch__btn-stopper {
+.stopwatch__btn-stopper,
+.stopwatch__btn-flag,
+.stopwatch__btn-set_flag  {
     display: none ;
 }
 /* Добавляем keyframe на уроке*/

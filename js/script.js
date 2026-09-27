@@ -53,7 +53,9 @@ let stopWatchBtn = document.querySelector('.stopwatch__btn'),
     stopWatchMinutes = 0,
     stopWatchHour = 0,
     recursion = false,
-    stopWatchBtnStopper = document.querySelector('.stopwatch__btn-stopper');
+    stopWatchBtnStopper = document.querySelector('.stopwatch__btn-stopper'),
+    stopWatchBtnFlag = document.querySelector('.stopwatch__btn-flag'),
+    stopWatchBtnSetFlag = document.querySelector('.stopwatch__btn-set_flag');
 
 function stopWatch() {
     if (recursion) {
@@ -99,5 +101,28 @@ stopWatchBtn.addEventListener('click', () => {
             stopWatchBtnStopper.style.display = 'none'
         })
         stopWatchBtn.innerHTML = 'start'
+        stopWatchBtnFlag.innerHTML = 'flag'
+        stopWatchBtnFlag.style.display = 'flex'
+        stopWatchBtnFlag.classList.add('stopwatch__btn')
+        stopWatchBtnFlag.addEventListener('click', () => {
+            let flag = {
+                stopWatchHour: stopWatchHour,
+                stopWatchMinutes: stopWatchMinutes,
+                stopWatchSeconds: stopWatchSeconds
+            }
+            stopWatchBtnSetFlag.style.display = 'flex'
+            stopWatchBtnSetFlag.classList.add('stopwatch__btn')
+            stopWatchBtnSetFlag.innerHTML = 'set flag'
+            stopWatchBtnSetFlag.addEventListener('click', () => {
+                stopWatchBtnSetFlag.style.display = 'none'
+                stopWatchBtnFlag.style.display = 'none'
+                stopWatchHour = flag.stopWatchHour
+                stopWatchMinutes = flag.stopWatchMinutes
+                stopWatchSeconds = flag.stopWatchSeconds
+                stopWatchHours.innerHTML = `${stopWatchHour}`
+                stopWatchMin.innerHTML = `${stopWatchMinutes}`
+                stopWatchSec.innerHTML = `${stopWatchSeconds}`
+            })
+        })
     }
 })
