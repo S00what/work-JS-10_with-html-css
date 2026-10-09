@@ -17,10 +17,9 @@ function getRandom(min, max) {
 
 function startTheGame() {
   const n = getRandom(1, 3),
-
-  const posX = getRandom(20, 480),
-    posY = getRandom(20, 280);
-  losted += 1,
+    posX = getRandom(20, 480),
+    posY = getRandom(20, 280),
+    losted += 1,
     r = getRandom(min = 0, max = 255),
     g = getRandom(min = 0, max = 255),
     b = getRandom(min = 0, max = 255);
