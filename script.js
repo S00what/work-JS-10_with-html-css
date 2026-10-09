@@ -19,23 +19,52 @@ function startTheGame() {
   const n = getRandom(1, 3),
     posX = getRandom(20, 480),
     posY = getRandom(20, 280),
-    losted += 1,
-    r = getRandom(min = 0, max = 255),
-    g = getRandom(min = 0, max = 255),
-    b = getRandom(min = 0, max = 255);
-  
-  box.innerHTML = `
-    <div class="wrap__info-game">
-        <p class="losted">Losted: ${losted}</p>
-        <p class="hitted">Hitted: ${hitted}</p>
-        <p class="timer">Time ${time}</p>
-    </div>
-    <button class="figure" style="position:absolute; bottom:${posX}px; right:${posY}px">
-    <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-      <rect width="20" height="20" fill="rgb(${r}, ${g}, ${b}"/>
-    </svg>
-    </button>
-    `;
+    r = getRandom(0, 255),
+    g = getRandom(0, 255),
+    b = getRandom(0, 255);
+  let randomFigure = getRandom(0, 3);
+  losted += 1;
+
+  if (randomFigure == 1) {
+    box.innerHTML = `
+      <div class="wrap__info-game">
+          <p class="losted">Losted: ${losted}</p>
+          <p class="hitted">Hitted: ${hitted}</p>
+          <p class="timer">Time ${time}</p>
+      </div>
+      <button class="figure" style="position:absolute; bottom:${posX}px; right:${posY}px">
+      <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <rect width="20" height="20" fill="rgb(${r}, ${g}, ${b}"/>
+      </svg>
+      </button>
+      `;
+  } else if (randomFigure == 2) {
+    box.innerHTML = `
+      <div class="wrap__info-game">
+          <p class="losted">Losted: ${losted}</p>
+          <p class="hitted">Hitted: ${hitted}</p>
+          <p class="timer">Time ${time}</p>
+      </div>
+      <button class="figure" style="position:absolute; bottom:${posX}px; right:${posY}px">
+      <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://w3.org">
+        <circle cx="10" cy="10" r="10" fill="rgb(${r}, ${g}, ${b})" />
+      </svg>
+      </button>
+      `;
+  } else {
+    box.innerHTML = `
+      <div class="wrap__info-game">
+          <p class="losted">Losted: ${losted}</p>
+          <p class="hitted">Hitted: ${hitted}</p>
+          <p class="timer">Time ${time}</p>
+      </div>
+      <button class="figure" style="position:absolute; bottom:${posX}px; right:${posY}px">
+      <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://w3.org">
+        <polygon points="10,0 0,20 20,20" fill="rgb(${r}, ${g}, ${b})" />
+      </svg>
+      </button>
+      `;
+  }
 }
 
 function easyModeGame() {
@@ -66,7 +95,11 @@ function timer() {
     if (time >= limit) {
       recursion = false;
       clearTimeout(spawnId);
-      box.innerHTML = `<p>Game over. Hitted: ${hitted}, Losted: ${losted}</p>`;
+      if (losted > hitted) {
+        box.innerHTML = `<p>Game over. Hitted: ${hitted}, Losted: ${losted}</p>`;
+      } else {
+        box.innerHTML = `<p>WIN . Hitted: ${hitted}, Losted: ${losted}</p>`;
+      }
       return;
     }
     timerId = setTimeout(() => timer(), 1000);
