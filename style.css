@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-width: 320px;
+}
+.box {
+    margin: 0 auto;
+    width: 300px;
+    height: 500px;
+    border: solid 2px grey;
+    background: grey;
+    position: relative;
+    display: flex;
+}
+.start,
+.mode {
+    display: flex;
+    border: solid 2px grey;
+    width: 80px;
+    height: 20px;
+    margin: 20px auto;
+    align-items: center;
+    justify-content: center;
+}
+.figure {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.mode {
+    display: none;
+    width: 160px;
+    height: 40px;
+    margin: 5px auto;
+}
+.wrap__modes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modes {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.stop {
+    display: none;
+}
+.wrap__info-game {
+    position: absolute;
+    left: -80px;
+    top: 200px;
+}
